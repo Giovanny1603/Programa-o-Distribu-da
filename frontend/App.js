@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 
-const socket = io('https://SEU_BACKEND_URL');
-axios.get('https://SEU_BACKEND_URL/notes')
+const socket = io('https://programa-o-distribu-da-production.up.railway.app');
+axios.get('https://programa-o-distribu-da-production.up.railway.app')
 
 
 function App() {
