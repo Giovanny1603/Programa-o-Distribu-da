@@ -1,21 +1,23 @@
-// frontend/src/App.jsx
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 
-const socket = io('https://programa-o-distribu-da-production.up.railway.app');
-axios.get('https://programa-o-distribu-da-production.up.railway.app')
+// Conexão com o backend
+const BACKEND_URL = 'https://programa-o-distribu-da-production.up.railway.app';
 
+const socket = io(BACKEND_URL);
 
 function App() {
   const [notes, setNotes] = useState([]);
   const [content, setContent] = useState('');
 
   useEffect(() => {
-    axios.get('https://notes-sync-api.up.railway.app/notes').then(res => {
+    // Busca as notas corretas do backend
+    axios.get(`${BACKEND_URL}/notes`).then(res => {
       setNotes(res.data);
     });
 
+    // Atualiza a lista de notas em tempo real via Socket.io
     socket.on('noteAdded', (note) => {
       setNotes(prev => [...prev, note]);
     });
@@ -27,7 +29,8 @@ function App() {
 
   const addNote = async () => {
     if (content.trim() === '') return;
-    await axios.post('https://notes-sync-api.up.railway.app/notes', { content });
+    
+    await axios.post(`${BACKEND_URL}/notes`, { content });
     setContent('');
   };
 
