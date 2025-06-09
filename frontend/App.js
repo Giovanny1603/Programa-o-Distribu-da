@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 
-const socket = io('https://notes-sync-api.up.railway.app'); // Altere para a URL real
+const socket = io('https://SEU_BACKEND_URL');
+axios.get('https://SEU_BACKEND_URL/notes')
+
 
 function App() {
   const [notes, setNotes] = useState([]);

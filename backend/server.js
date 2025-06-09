@@ -1,12 +1,11 @@
 // backend/server.js
-import dotenv from 'dotenv';
-dotenv.config();
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
