@@ -1,5 +1,5 @@
 // backend/server.js
-const express = require('express');
+import express from 'express';
 const http = require('http');
 const { Server } = require('socket.io');
 const mongoose = require('mongoose');
